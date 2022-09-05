@@ -125,13 +125,8 @@ public class JDBCExample {
 				e.printStackTrace();
 			}
 		
-		
 		}
 		
-		
 	}
-	
-	
-	
-	
+
 }
