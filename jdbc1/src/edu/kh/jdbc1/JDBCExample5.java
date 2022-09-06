@@ -27,7 +27,7 @@ public class JDBCExample5 {
 			System.out.print("입사일 입력(YYYY-MM-DD) : ");
 			String input=sc.next();
 			
-			Class.forName("orcle.jdbc.driver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			String url="jdbc:oracle:thin:@localhost:1521:XE";
 			
