@@ -296,7 +296,7 @@ public class EmployeeDAO {
 			//SQL수행 후 결과 반환
 			result=pstmt.executeUpdate();
 			
-			//excuteUpdate(): DML(INDERT,UPDATE,DELETE), 수행 후 결과 행 개수 반환
+			//excuteUpdate(): DML(INSERT,UPDATE,DELETE), 수행 후 결과 행 개수 반환
 			//excuteQuery(): SELECT 수행 후 ResultSet 반환
 			
 			//***트랜잭션 제어 처리***
