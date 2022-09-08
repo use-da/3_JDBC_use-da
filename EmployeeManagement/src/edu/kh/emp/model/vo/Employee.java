@@ -1,5 +1,7 @@
 package edu.kh.emp.model.vo;
 
+import java.util.Objects;
+
 //VO(Value Object) : 값 저장용 객체 (==DB 조회 결과 한 행을 저장)
 public class Employee {
 	   private int empId;      			 // 사원 번호(사번)
@@ -187,6 +189,32 @@ public class Employee {
 				+ ", phone=" + phone + ", departmentTitle=" + departmentTitle + ", jobName=" + jobName + ", salary="
 				+ salary + ", deptCode=" + deptCode + ", jobCode=" + jobCode + ", salLevel=" + salLevel + ", bonus="
 				+ bonus + ", managerId=" + managerId + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(bonus, departmentTitle, deptCode, email, empId, empName, empNo, jobCode, jobName, managerId,
+				phone, salLevel, salary);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus)
+				&& Objects.equals(departmentTitle, other.departmentTitle) && Objects.equals(deptCode, other.deptCode)
+				&& Objects.equals(email, other.email) && empId == other.empId && Objects.equals(empName, other.empName)
+				&& Objects.equals(empNo, other.empNo) && Objects.equals(jobCode, other.jobCode)
+				&& Objects.equals(jobName, other.jobName) && managerId == other.managerId
+				&& Objects.equals(phone, other.phone) && Objects.equals(salLevel, other.salLevel)
+				&& salary == other.salary;
 	}
 
 	
