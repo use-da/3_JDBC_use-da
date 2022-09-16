@@ -9,9 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.Scanner;
 
 import edu.kh.jdbc.common.JDBCTemplate;
 import edu.kh.jdbc.model.vo.TestVO;
+import edu.kh.jdbc.run.Run3;
 
 //DAO(Data Access Object) : 데이터가 저장된 DB에 접근하는 객체 -> SQL수행, 결과 반환 받는 기능을 수행
 public class TestDAO {
@@ -78,6 +80,40 @@ public class TestDAO {
 		}
 		
 		// 7. SQL 수행 결과 반환
+		return result;
+	}
+
+
+	/** UPDATE 서비스
+	 * @param conn
+	 * @param vo1
+	 * @return
+	 * @throws SQLException 
+	 */
+	public int update(Connection conn, TestVO vo) throws SQLException {
+		
+	
+		int result=0;
+				
+		try {
+			
+			String sql=prop.getProperty("update");
+		
+			pstmt=conn.prepareStatement(sql);
+		
+			
+			pstmt.setString(1, vo.getTestTitle() );
+			pstmt.setString(2, vo.getTestContent() );
+			pstmt.setInt(3, vo.getTestNo());		
+		
+			result=pstmt.executeUpdate();  
+					
+		} finally {
+			
+			JDBCTemplate.close(pstmt);
+		}
+				
+		
 		return result;
 	}
 

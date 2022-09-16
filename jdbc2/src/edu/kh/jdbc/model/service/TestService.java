@@ -95,4 +95,24 @@ public class TestService {
 		}
 		return res;
 	}
+
+
+	/** UPDATE서비스
+	 * @param vo1
+	 * @return result
+	 * @throws SQLException 
+	 */
+	public int update(TestVO vo) throws SQLException {
+		
+		Connection conn= JDBCTemplate.getConnection();
+				
+		int result = dao.update(conn,vo);
+		
+		if(result>0) JDBCTemplate.commit(conn);
+		else		 JDBCTemplate.rollback(conn);
+				
+		JDBCTemplate.close(conn);
+				
+		return result;
+	}
 }
