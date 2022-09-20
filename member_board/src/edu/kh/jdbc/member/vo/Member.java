@@ -15,6 +15,7 @@ public class Member {
 	//기본 생성자
 	public Member() {}
 	//매개변수 생성자
+	//회원가입 DAO
 	public Member(String memberId, String memberPw, String memberName, String memberGender) {
 		super();
 		this.memberId = memberId;
@@ -22,7 +23,7 @@ public class Member {
 		this.memberName = memberName;
 		this.memberGender = memberGender;
 	}
-	
+	//로그인 DAO
 	public Member(int memberNo, String memberId, String memberName, String memberGender, String enrollDate) {
 		super();
 		this.memberNo = memberNo;
@@ -32,12 +33,18 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 	
-	
-	
+	//회원목록 조회
+	public Member(String memberId, String memberName, String memberGender) {
+		super();
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberGender = memberGender;
+	}
 	//getter/setter
 	public int getMemberNo() {
 		return memberNo;
 	}
+
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
@@ -78,6 +85,15 @@ public class Member {
 		this.secessionFlag = secessionFlag;
 	}
 	
+	//to String
+//	@Override
+//	public String toString() {
+//		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberName="
+//				+ memberName + ", memberGender=" + memberGender + ", enrollDate=" + enrollDate + ", secessionFlag="
+//				+ secessionFlag + "]";
+//	}
+
+
 	
 	
 	
