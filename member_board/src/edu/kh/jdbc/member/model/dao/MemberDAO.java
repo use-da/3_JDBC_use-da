@@ -83,10 +83,8 @@ public class MemberDAO {
 	 * @throws Exception
 	 */
 	public int updateMember(Connection conn, Member member) throws Exception{
-		
 		//결과 저장용 변수 생성
 		int result=0; //UPDATE 결과 반영된 행의 개수 저장용 변수
-		
 		try {
 			//SQL얻어오기
 			String sql=prop.getProperty("updateMember");
@@ -100,7 +98,6 @@ public class MemberDAO {
 			
 			//SQL수행 후 결과 반환
 			result=pstmt.executeUpdate();
-					
 		} finally {
 			//JDBC 객체 반환
 			close(pstmt);
@@ -108,7 +105,7 @@ public class MemberDAO {
 		//수정 결과 반환
 		return result;
 	}	//DB동기화 작업필요 -> View
-
+	
 	/**비밀번호 변경 DAO
 	 * @param conn
 	 * @param currentPw
@@ -118,7 +115,6 @@ public class MemberDAO {
 	 * @throws Exception
 	 */
 	public int updatePw(Connection conn, String currentPw, String newPw1, int memberNo) throws Exception {
-		
 		//결과 저장용 변수 생성
 				int result=0; //UPDATE 결과 반영된 행의 개수 저장용 변수
 				
@@ -143,7 +139,6 @@ public class MemberDAO {
 				//수정 결과 반환
 				return result;
 	}
-
 	/** 회원탈퇴 DAO
 	 * @param conn
 	 * @param memberPw
@@ -175,7 +170,4 @@ public class MemberDAO {
 		//수정 결과 반환
 		return result;
 	}
-	
-	
-	
 }
