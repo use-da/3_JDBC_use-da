@@ -9,7 +9,6 @@
 		FROM MEMBER
 		WHERE SECESSION_FL='N'
 		ORDER BY MEMBER_NO DESC
-	
 	</entry>
 	<!-- 회원 정보 수정(이름,성별) -->
 	<entry key="updateMember">
@@ -18,6 +17,7 @@
 			MEMBER_GENDER=?
 		WHERE MEMBER_NO=?
 	</entry>
+	
 	<!-- 비밀번호 변경 -->
 	<entry key="updatePw">
 		UPDATE MEMBER SET
