@@ -71,7 +71,9 @@ public class Comment {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	
+
+
+
 	
 	
 	
