@@ -99,6 +99,54 @@ public class BoardService {
 		
 		return result;
 	}
+
+	/**게시글 등록 서비스
+	 * WEB에서 CURRVAL 사용시 오류가 생길 수 있다 
+	 * @param board
+	 * @return board
+	 * @throws Exception
+	 */
+	public int insertBoard(Board board) throws Exception {
+		Connection conn=getConnection();
+		
+		// 게시글 번호 생성 dao 호출
+		// 왜? 동시에 여러 사림이 게시글을 등록하면 시퀀스가 한번에 증가하여 CURRVAL 구문을 이용하면 문제가 발생
+		// -> 게시글 등록 서비스를 호출한 순서대로 미리 게시글 번호를 생성해 얻어와 insert한다
+		
+		int boardNo=dao.nextBoardNo(conn);
+		
+		board.setBoardNo(boardNo);
+		
+		
+		int result=dao.insertBoard(conn, board);
+		
+		if(result>0) { 
+			commit(conn);
+			result=boardNo;	
+		
+		}
+		else		 rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/**게시글 검색
+	 * @param condition
+	 * @param query
+	 * @return boardList
+	 * @throws Exception
+	 */
+	public List<Board> searchBoard(int condition, String query) throws Exception {
+		Connection conn=getConnection();
+		
+		List<Board>boardList=dao.searchBoard(conn, condition, query);
+		
+		close(conn);
+		
+		return boardList;
+	}
 	
 	
 	
