@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>manager-query.xml file</comment>
+	<!-- 판매 신청 조회 -->
+	<entry key="selectSRBoard">
+		SELECT SR_BOARD_NO, MEMBER_NO, PHONE,
+			(SELECT SELLER_RIGHT 
+			FROM MEMBER M 
+			WHERE M.MEMBER_NO = S.MEMBER_NO) SELLER_RIGHT
+		FROM SR_BOARD S
+		WHERE DELETE_SB = 'N'
+		ORDER BY SR_BOARD_NO DESC
+	</entry>
+	<!-- 판매 권한 승인 -->
+	<entry key="sellerRightUpdate">
+		UPDATE MEMBER SET
+		SELLER_RIGHT = ?
+		WHERE MEMBER_NO=?
+	</entry>
+	<!-- 판매 신청글 삭제 -->
+	<entry key="deleteSRBoard">
+		UPDATE SR_BOARD SET
+		DELETE_SB = 'Y'
+		WHERE SR_BOARD_NO=?
+	</entry>
+	<!-- 신고 조회 -->
+	<entry key="selectBadMember">
+		SELECT RB_NO, BAD_MEMBER, REPORT_CONTENT
+		FROM REPORT_BOARD
+		ORDER BY RB_NO DESC
+	</entry>
+</properties>
